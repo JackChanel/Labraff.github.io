@@ -138,14 +138,23 @@
 												昵称{{index+1}}
 											</div>
 										</div>
-
 										<div class="c-context">
 											评论内容{{index+1}}
 										</div>
 									</div>
+
 									<a class="moreComment" @click="href('./pages/moreComment.html?id='+item.id)">
 										浏览更多评论…
 									</a>
+
+									<div class="writeComment">
+										<input type="text" placeholder="写下你的评论…" @input="getComment">
+										<div class="submitCommentBtn">
+											<div class="sub" @click="submitComment">
+												发布
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -155,6 +164,19 @@
 					</div>
 				</section>
 				<aside>
+					<div class="title">
+						待审核评论
+					</div>
+					<div class="myCommentCard">
+						<div class="card" v-for="(item,index) in myComment">
+							<div class="context">
+								{{item.context}}
+							</div>
+							<div class="delete" @click="delMyComment(item.id)">
+								取消发布
+							</div>
+						</div>
+					</div>
 				</aside>
 			</div>
 		</div>
@@ -191,6 +213,13 @@
 					}
 				],
 				starList:[],
+				myComment:[
+					{ 
+					id:1,
+					context:'第一条评论~~~~~'
+					}
+				],
+				tempInput:'',
 			},
 			mounted(){
 				console.log(localStorage.getItem("isLogin"))		
@@ -208,6 +237,34 @@
 				}
 			},
 			methods:{
+				getComment(e){
+					this.tempInput= e.target.value
+				},
+				submitComment(){
+					if(this.myComment.length>3){
+						alert('待审核评论过多，请稍后')
+					}else if(this.tempInput==''){
+						alert('请在输入后提交评论')
+					}else{
+						this.myComment.push({
+							id:this.myComment[this.myComment.length-1].id+1,
+							context:this.tempInput
+						})
+						this.showIndex=-1
+					}
+				},
+				delMyComment(id){
+					let myComment = new Array()
+					for(let item of this.myComment)
+					{
+						if(item.id!=id){
+							myComment.push(item)
+						}
+					}
+					this.myComment=myComment
+				},
+				
+				
 				star(index){
 					if(!this.isLogin){
 						let res = confirm("登录后即可收藏~是否现在登录？")

@@ -6,10 +6,7 @@
   padding: 0px;
 }
 
-input::-webkit-input-placeholder {
-  color: #c67171;
-  font-size: 17px;
-}
+
 
 body {
   background-color: #f6f6f6;
@@ -102,7 +99,6 @@ header .inner .searchbox .searchbg {
 
 header .inner .searchbox .hover {
   position: absolute;
-  /* border: white 1px solid; */
   margin-right: 1px;
 }
 
@@ -131,6 +127,10 @@ header .inner .searchbox input {
   letter-spacing: 2px;
   color: white;
   font-weight: 200;
+}
+header .inner .searchbox input::-webkit-input-placeholder {
+  color: #c67171;
+  font-size: 17px;
 }
 
 header .inner .usercontrol {
@@ -371,6 +371,47 @@ header .inner .usercontrol .msg {
 							}
 						}
 					
+						.writeComment{
+							display: flex;
+							margin-top: 15px;
+							width: 100%;
+							border-top:#dfdfdf solid 2px;
+							input{
+								margin-left: 16px;
+								margin-top: 15px;
+								margin-bottom: 5px;
+								padding-left: 15px;
+								width: 666px;
+								height: 40px;
+								border-radius: 5px;
+								border:#929cb0 solid 2px;
+								outline: none;
+								font-size: 17px;
+								color: #929cb0;
+								font-weight: 200;
+							}
+							input::-webkit-input-placeholder {
+							  color: #7d8596;
+							  font-size: 16px;
+							}
+							.submitCommentBtn{
+								margin-left: 16px;
+								margin-top: 16px;
+								margin-bottom: 5px;
+								width: 70px;
+								border-radius:5px ;
+								background-color:#e75151;
+								color: #fff;
+								display: flex;
+								cursor: pointer;
+								.sub{
+									font-size: 17px;
+									margin: auto;
+									font-weight: 900;
+								}
+							}
+						}
+					
 						.moreComment{
 							display: block;
 							margin-top: 10px;
@@ -400,6 +441,49 @@ header .inner .usercontrol .msg {
     box-shadow: 1px 1px 1px 1px silver;
     width: 350px;
     height: 320px;
+		display: flex;
+		flex-direction: column;
+		.title{
+			height: 40px;
+			margin: 5px auto;
+			font-size: 20px;
+			font-weight: 800;
+		}
+		.myCommentCard{
+			width: 85%;
+			border-top:#d5d5d5 1px solid;
+			height: 30px;
+			margin: 0px auto;
+			margin-top:-12px;
+			display: flex;
+			flex-direction: column;
+			.card{
+				width: 300px;
+				min-height: 50px;
+				border: solid #e7e7e7 1px;
+				border-radius: 5px;
+				margin: auto;
+				margin-top: 5px;
+				padding: 5px 0px;
+				font-size: 15px;
+				color: #515151;
+				
+				.context{
+					width: 280px;
+					padding: 5px;
+					white-space:nowrap;
+					overflow:hidden;
+					text-overflow: ellipsis;
+				}
+				.delete{
+					cursor: pointer;
+					padding: 5px;
+					color: #c62f2f;
+					padding-left: 230px;
+				}
+			}
+		}
+		
   }
 	
 	.iconItem{
