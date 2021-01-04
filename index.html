@@ -167,7 +167,7 @@
 					<div class="title">
 						待审核评论
 					</div>
-					<div class="myCommentCard">
+					<div class="myCommentCard" v-if="isLogin">
 						<div class="card" v-for="(item,index) in myComment">
 							<div class="context">
 								{{item.context}}
@@ -176,6 +176,9 @@
 								取消发布
 							</div>
 						</div>
+					</div>
+					<div class="myCommentCard" v-else>
+						登录后才可以发表评论
 					</div>
 				</aside>
 			</div>
