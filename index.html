@@ -86,26 +86,26 @@
 								</div>
 								<div class="actions">
 									<div style="display: flex; ">
-										<div class="iconItem" @click="Star(index)" v-if="item.star" style="color: #fab509;">
+										<div class="iconItem" @click="star(index)" v-if="item.star" style="color: #fab509;">
 											<div class="icon">
 												&#xe61b;
 											</div>
 											<p class="text">收藏</p>
 										</div>
-										<div class="iconItem" @click="Star(index)" v-else>
+										<div class="iconItem" @click="star(index)" v-else>
 											<div class="icon">
 												&#xe60a;
 											</div>
 											<p class="text">收藏</p>
 										</div>
 
-										<div class="iconItem" @click="Like(index)" v-if="item.islike" style="color: #f1543a;">
+										<div class="iconItem" @click="like(index)" v-if="item.islike" style="color: #f1543a;">
 											<div class="icon">
 												&#xe601;
 											</div>
 											<p class="text">{{item.like}}</p>
 										</div>
-										<div class="iconItem" @click="Like(index)" v-else>
+										<div class="iconItem" @click="like(index)" v-else>
 											<div class="icon">
 												&#xe600;
 											</div>
@@ -114,7 +114,7 @@
 									</div>
 
 									<div>
-										<div class="iconItem" @click="Comment(index)">
+										<div class="iconItem" @click="comment(index)">
 											<div class="icon">
 												&#xe609;
 											</div>
@@ -208,7 +208,7 @@
 				}
 			},
 			methods:{
-				Star(index){
+				star(index){
 					if(!this.isLogin){
 						let res = confirm("登录后即可收藏~是否现在登录？")
 						if(res){
@@ -227,7 +227,7 @@
 						}
 					}
 				},
-				Like(index){
+				like(index){
 					if(!this.isLogin){
 						let res = confirm("登录后即可点击喜欢~是否现在登录？")
 						if(res){
@@ -243,7 +243,7 @@
 						this.reviewList[index].islike = !this.reviewList[index].islike
 					}
 				},
-				Comment(index){
+				comment(index){
 					if(!this.isLogin){
 						let res = confirm("登录后即可评论~是否现在登录？")
 						if(res){
